@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="RpeHlHaFE2gyfu1-urLa" name="ページ1">
-        <mxGraphModel dx="2329" dy="2029" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2358" dy="2076" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -21,13 +21,13 @@
                 <mxCell id="51" value="images" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="680" y="160" width="160" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="image&#10;item_id&#10;purchase_id&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="51">
+                <mxCell id="52" value="image&#10;item_id&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="51">
                     <mxGeometry y="30" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="category" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="667" y="-90" width="160" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="54" value="name&#10;ancesty&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="53">
+                <mxCell id="54" value="name&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="53">
                     <mxGeometry y="30" width="160" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="item（出品中商品情報）" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
@@ -45,7 +45,7 @@
                 <mxCell id="59" value="user" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="-70" y="-170" width="160" height="220" as="geometry"/>
                 </mxCell>
-                <mxCell id="60" value="nickname&#10;email&#10;user_password&#10;user_image&#10;family_name&#10;first_name&#10;family_name_kana&#10;first_name_kana&#10;birth_day&#10;introduction&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="59">
+                <mxCell id="60" value="nickname&#10;email&#10;encrypted_password&#10;user_image&#10;family_name&#10;first_name&#10;family_name_kana&#10;first_name_kana&#10;birth_day&#10;introduction&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="59">
                     <mxGeometry y="30" width="160" height="190" as="geometry"/>
                 </mxCell>
                 <mxCell id="96" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;entryX=-0.018;entryY=0.129;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="60" target="56">
@@ -87,7 +87,7 @@
                 <mxCell id="137" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="-130" y="50" width="300" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="138" value="has_many :items dependent: :destroy&#10;belongs_to :destination dependent: :destroy&#10;belongs_to :credit_cardcard dependent: :destroy" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="137">
+                <mxCell id="138" value="has_many :items dependent: :destroy&#10;has_one :credit_card dependent: :destroy&#10;belongs_to :destination dependent: :destroy&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="137">
                     <mxGeometry y="30" width="300" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="139" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
@@ -105,7 +105,7 @@
                 <mxCell id="144" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="220" y="220" width="300" height="160" as="geometry"/>
                 </mxCell>
-                <mxCell id="145" value="belongs_to :user dependent: :destroy&#10;belongs_to :category dependent: :destroy&#10;belongs_to :brand dependent: :destroy&#10;has_many :images dependent: :destroy&#10;belongs_to_active_hash :prefecture" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="144">
+                <mxCell id="145" value="belongs_to :user dependent: :destroy&#10;belongs_to :category dependent: :destroy&#10;belongs_to :brand dependent: :destroy&#10;has_many :images dependent: :destroy&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="144">
                     <mxGeometry y="30" width="300" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="149" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
@@ -117,7 +117,7 @@
                 <mxCell id="151" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="640" y="30" width="300" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="152" value="has_many :items&#10;※ancestryは、gem ancestryを使用するため" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="151">
+                <mxCell id="152" value="has_many :items&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="151">
                     <mxGeometry y="30" width="300" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="153" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
