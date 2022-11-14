@@ -2,65 +2,74 @@
 
 ## users テーブル
 
-| Column             | Type   | Options             |
-| ------------------ | ------ | --------------------|
-| nickname           | string | null: false         |
-| email              | string | null: false         |
-| encrypted_password | string | null: false         |
-| family_name        | string | null: false         |
-| first_name         | string | null: false         |
-| family_name_kana   | string | null: false         |
-| first_name_kana    | string | null:false          |
-| birth_day          | date   | null: false         |
+| Column             | Type   | Options                         |
+| ------------------ | ------ | ------------------------------- |
+| nickname           | string | null: false                     |
+| email              | string | null: false unique: true        |
+| encrypted_password | string | null: false                     |
+| family_name        | string | null: false                     |
+| first_name         | string | null: false                     |
+| family_name_kana   | string | null: false                     |
+| first_name_kana    | string | null:false                      |
+| birth_day          | date   | null: false                     |
 
 
 ### Association
 
-- has_many :items dependent: :destroy
-- has_one :credit_card dependent: :destroy
-- belongs_to :credit_card dependent: :destroy
+- has_many :order dependent: :destroy
+- has_many :destination dependent: destroy
+- has_many :item dependent: destroy
 
 
 ## destinationテーブル
 
-| Column             | Type      | Options                        |
-| ------------------ | --------- | -------------------------------|
-| family_name        | string    | null: false                    |
-| first_name         | string    | null: false                    |
-| family_name_kana   | string    | null: false                    |
-| first_name_kana    | string    | null: false                    |
-| prefecture_id      | integer   | null: false, foreign_key: true |
+| Column             | Type      | Options                      |
+| ------------------ | --------- | -----------------------------|
+| post_code          | string    | null: false                  |
+| prefecture         | integer   | null: false                  |
+| city               | string    | null: false                  |
+| address            | string    | null: false                  |
+| building_name      | string    |                              |
+| phone_number       | string    | null: false                  |
+| order              | reference | null: false,foreign_key:true |
 
 
 ### Association
 
-- belongs_to :item
+- has_many :order dependent: :destroy
+- belongs_to :user
 
 
-## credit_cardsテーブル
+## ordersテーブル
 
 | Column             | Type      | Options                        |
 | ------------------ | --------- | -------------------------------|
-| user_id            | reference | null: false, foreign_key: true |
-| item_id            | reference | null: false, foreign_key: true |
+| user               | reference | null: false, foreign_key: true |
+| item               | reference | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :destination
+- belongs_to :user
+- has_one :destination
+
+
+
+## itemsテーブル
+
+| Column             | Type      | Options                        |
+| ------------------ | --------- | ------------------------------ |
+| name               | string    | null: false                    |
+| price              | integer   | null: false                    |
+| description        | text      | null: false                    |
+| category           | integer   | null: false                    |
+| item_condition     | integer   | null: false                    |
+| shipping_cost      | integer   | null: false                    |
+| prefecture         | integer   | null: false                    |
+| shipping_days      | integer   | null: false                    |
+| user               | reference | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user 
-- belongs_to :item 
-
-
-## itemテーブル
-
-| Column             | Type      | Options                      |
-| ------------------ | --------- | -----------------------------|
-| name               | string    | null: false                  |
-| price              | integer   | null: false                  |
-| description        | string    | null: false                  |
-| item_condition     | string    | null: false                  |
-| shipping_cost      | string    | null: false                  |
-| shipping_days      | string    | null: false                  |
-
-### Association
-
-- has_many :images dependent: :destroy
+- has_one :order,dependent: :destroy 
