@@ -16,12 +16,12 @@
 
 ### Association
 
-- has_many :order dependent: :destroy
-- has_many :destination dependent: destroy
-- has_many :item dependent: destroy
+- has_many :orders dependent: :destroy
+- has_many :destinations dependent: destroy
+- has_many :items dependent: destroy
 
 
-## destinationテーブル
+## destinationsテーブル
 
 | Column             | Type      | Options                      |
 | ------------------ | --------- | -----------------------------|
@@ -37,7 +37,7 @@
 ### Association
 
 - has_many :order dependent: :destroy
-- belongs_to :user
+
 
 
 ## ordersテーブル
@@ -49,7 +49,6 @@
 
 ### Association
 
-- belongs_to :destination
 - belongs_to :user
 - has_one :destination
 
@@ -57,17 +56,17 @@
 
 ## itemsテーブル
 
-| Column             | Type      | Options                        |
-| ------------------ | --------- | ------------------------------ |
-| name               | string    | null: false                    |
-| price              | integer   | null: false                    |
-| description        | text      | null: false                    |
-| category           | integer   | null: false                    |
-| item_condition     | integer   | null: false                    |
-| shipping_cost      | integer   | null: false                    |
-| prefecture         | integer   | null: false                    |
-| shipping_days      | integer   | null: false                    |
-| user               | reference | null: false, foreign_key: true |
+| Column                | Type      | Options                        |
+| --------------------- | --------- | ------------------------------ |
+| name                  | string    | null: false                    |
+| price                 | integer   | null: false                    |
+| description           | text      | null: false                    |
+| category              | integer   | null: false                    |
+| item_condition_id     | integer   | null: false                    |
+| shipping_cost_id      | integer   | null: false                    |
+| prefecture_id         | integer   | null: false                    |
+| shipping_days_id      | integer   | null: false                    |
+| user                  | reference | null: false, foreign_key: true |
 
 ### Association
 
