@@ -17,58 +17,57 @@
 ### Association
 
 - has_many :orders dependent: :destroy
-- has_many :destinations dependent: destroy
 - has_many :items dependent: destroy
 
 
 ## destinationsテーブル
 
-| Column             | Type      | Options                      |
-| ------------------ | --------- | -----------------------------|
-| post_code          | string    | null: false                  |
-| prefecture         | integer   | null: false                  |
-| city               | string    | null: false                  |
-| address            | string    | null: false                  |
-| building_name      | string    |                              |
-| phone_number       | string    | null: false                  |
-| order              | reference | null: false,foreign_key:true |
+| Column             | Type       | Options                      |
+| ------------------ | ---------- | -----------------------------|
+| post_code          | string     | null: false                  |
+| prefecture_id      | integer    | null: false                  |
+| city               | string     | null: false                  |
+| address            | string     | null: false                  |
+| building_name      | string     |                              |
+| phone_number       | string     | null: false                  |
+| order              | references | null: false,foreign_key:true |
 
 
 ### Association
 
-- has_many :order dependent: :destroy
-
+- has_one :order dependent: :destroy
 
 
 ## ordersテーブル
 
-| Column             | Type      | Options                        |
-| ------------------ | --------- | -------------------------------|
-| user               | reference | null: false, foreign_key: true |
-| item               | reference | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | -------------------------------|
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :destination
+- belongs_to :destination
+- belongs_to :item
 
 
 
 ## itemsテーブル
 
-| Column                | Type      | Options                        |
-| --------------------- | --------- | ------------------------------ |
-| name                  | string    | null: false                    |
-| price                 | integer   | null: false                    |
-| description           | text      | null: false                    |
-| category              | integer   | null: false                    |
-| item_condition_id     | integer   | null: false                    |
-| shipping_cost_id      | integer   | null: false                    |
-| prefecture_id         | integer   | null: false                    |
-| shipping_days_id      | integer   | null: false                    |
-| user                  | reference | null: false, foreign_key: true |
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| name                  | string     | null: false                    |
+| price                 | integer    | null: false                    |
+| description           | text       | null: false                    |
+| category_id           | integer    | null: false                    |
+| item_condition_id     | integer    | null: false                    |
+| shipping_cost_id      | integer    | null: false                    |
+| prefecture_id         | integer    | null: false                    |
+| shipping_days_id      | integer    | null: false                    |
+| user                  | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user 
-- has_one :order,dependent: :destroy 
+- has_one :order dependent: :destroy 

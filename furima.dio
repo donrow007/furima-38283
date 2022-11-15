@@ -22,7 +22,7 @@
                 <mxCell id="57" value="destinations(発送先情報；購入者が記入・商品購入機能)" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-780" y="-760" width="440" height="310" as="geometry"/>
                 </mxCell>
-                <mxCell id="58" value="post_code&#10;&#10;prefecture&#10;&#10; city  &#10;&#10;address &#10;          &#10;building_name&#10;      &#10;phone_number&#10;      &#10;purchase_history&#10;&#10;order&#10;&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="57" vertex="1">
+                <mxCell id="58" value="post_code&#10;&#10;prefecture_id&#10;&#10; city  &#10;&#10;address &#10;          &#10;building_name&#10;      &#10;phone_number&#10;      &#10;purchase_history&#10;&#10;order&#10;&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="57" vertex="1">
                     <mxGeometry y="30" width="440" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="59" value="users（ユーザー情報；アプリを使う人・新規登録・ユーザー管理機能）" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
@@ -34,13 +34,13 @@
                 <mxCell id="137" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="-270" y="-830" width="300" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="138" value="has_many :orders dependent: :destroy&#10;&#10;has_many :destinations dependent: destroy&#10;&#10;has_many :items dependent: destroy" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="137" vertex="1">
+                <mxCell id="138" value="has_many :orders dependent: :destroy&#10;&#10;has_many :items dependent: destroy" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="137" vertex="1">
                     <mxGeometry y="30" width="300" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="141" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="450" y="-650" width="300" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="142" value="belongs_to :user&#10;&#10;has_one :destination&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="141" vertex="1">
+                <mxCell id="142" value="belongs_to :user&#10;&#10;belongs_to :destinations&#10;&#10;belongs_to :item" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="141" vertex="1">
                     <mxGeometry y="30" width="300" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="144" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
@@ -61,7 +61,7 @@
                         <mxPoint x="260" y="-350" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="163" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="145" target="44">
+                <mxCell id="163" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=1;exitY=0.538;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="172" target="44">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
                         <mxPoint x="210" y="-185" as="sourcePoint"/>
                         <mxPoint x="500" y="-220" as="targetPoint"/>
@@ -76,14 +76,8 @@
                 <mxCell id="169" value="Association" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="-780" y="-450" width="300" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="170" value="has_manys :order dependent: :destroy&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="169">
+                <mxCell id="170" value="has_one :order dependent: :destroy&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="169">
                     <mxGeometry y="30" width="300" height="70" as="geometry"/>
-                </mxCell>
-                <mxCell id="171" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERone;endFill=1;exitX=0.202;exitY=0.002;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="57" target="60">
-                    <mxGeometry width="100" height="100" relative="1" as="geometry">
-                        <mxPoint x="-510" y="-280" as="sourcePoint"/>
-                        <mxPoint x="-530" y="-710" as="targetPoint"/>
-                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
