@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # 存在すること・確認用を含めて2回入力・6字以上はdeviseのデフォルト実装のため省略 
+  # 存在すること・確認用を含めて2回入力・6字以上はdeviseのデフォルト実装のため省略
 
   # 半角英数字（空文字NG）以外の場合には、メッセージを出す
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   # ニックネームはかぶらないように。そして、入力は必須
   validates :nickname, presence: true, uniqueness: true
 
-  #メールはかぶらないように。そして、入力は必須
+  # メールはかぶらないように。そして、入力は必須
   # @含むこと・存在することはdeviseのデフォルト実装のため省略
   validates :email,    uniqueness: true
 
@@ -25,5 +25,4 @@ class User < ApplicationRecord
   validates :family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :birthday, presence: true
-
 end
