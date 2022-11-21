@@ -51,6 +51,13 @@ RSpec.describe User, type: :model do
         # binding.pry
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
+
+      it 'メールアドレスに@が含まれていない場合登録できない' do
+        @user.email = 'hogehuga.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
+      end
+
       it 'パスワードが空欄だと保存できない' do
         @user.password = ''
         @user.valid?
@@ -75,6 +82,20 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+
+      it 'passwordが数字だけだと登録できない' do
+        @user.password = '123456'
+        @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'passwordが英字だけだと登録できない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+
       it '名字が全角（漢字・ひらがな・カタカナ）でないと登録できない' do
         @user.family_name = 'yamada'
         @user.valid?
@@ -95,6 +116,28 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
+
+      it '名字は｛全角（漢字・ひらがな・カタカナ）｝空欄で登録できない' do
+        @user.family_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name can't be blank")
+      end
+      it '名前は｛全角（漢字・ひらがな・カタカナ）｝空欄では登録できない' do
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+      it '名字のフリガナが全角は（カタカナ）空欄では登録できない' do
+        @user.family_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+      end
+      it '名前のフリガナが全角は（カタカナ）空欄では登録できない' do
+        @user.first_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      end
+
       it '生年月日が空欄だと保存できない' do
         @user.birthday = ''
         @user.valid?

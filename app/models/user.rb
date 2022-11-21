@@ -10,16 +10,11 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'Include both letters and numbers'
 
-  # ニックネームはかぶらないように。そして、入力は必須
-  validates :nickname, presence: true, uniqueness: true
-
-  # メールはかぶらないように。そして、入力は必須
-  # @含むこと・存在することはdeviseのデフォルト実装のため省略
-  validates :email,    uniqueness: true
+  validates :nickname, presence: true
 
   # 全角ひらがな、全角カタカナ、漢字で入力必須
-  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]/ }
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]/ }
 
   # 全角カタカナで入力必須
   validates :family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
