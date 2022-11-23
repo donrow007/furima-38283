@@ -30,10 +30,10 @@ class Item < ApplicationRecord
 
   # ジャンルの選択が「--」の時は保存不可
     validates :category_id, numericality: { other_than: 0 }
-    validates :delivery_area_id, numericality: { other_than: 0 }
-    validates :item_status_id, numericality: { other_than: 0 }
+    validates :prefecture_id, numericality: { other_than: 0 }
+    validates :item_condition_id, numericality: { other_than: 0 }
     validates :shipping_cost_id, numericality: { other_than: 0 }
-    validates :shipping_date_id, numericality: { other_than: 0 }
+    validates :shipping_day_id, numericality: { other_than: 0 }
 
   
 end
