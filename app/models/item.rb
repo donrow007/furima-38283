@@ -12,7 +12,8 @@ class Item < ApplicationRecord
   belongs_to :shipping_cost
   belongs_to :shipping_day
 
-  
+  # active_storageとのアソシエーション
+  has_one_attached :image
 
   
     validates :user_id, presence: true 
