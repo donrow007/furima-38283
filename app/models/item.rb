@@ -16,15 +16,16 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   
-    validates :user_id, presence: true 
+    
     validates :image, presence: true
     validates :name, presence: true 
     validates :description, presence: true 
-    validates :category_id, presence: true 
-    validates :item_condition_id, presence: true 
-    validates :shipping_cost_id, presence: true 
-    validates :prefecture_id, presence: true 
-    validates :shipping_day_id, presence: true 
+    validates :price, presence: true 
+  
+    # 数値は半角数値
+    validates :price, format: { with: /\A[0-9]+\z/ }
+    # 整数のみを許可
+    validates :price, numericality: { only_integer: true }
     # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999  }
 

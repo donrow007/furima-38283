@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.create(:item)
-    sleep 0.1 
+    @item = FactoryBot.build(:item)
+     
 end
 
 describe '商品の出品登録' do
@@ -37,12 +37,7 @@ describe '商品の出品登録' do
   end
 
   context '出品ができないとき' do
-    it 'ユーザー登録している人でないと出品できない' do
-      @item.user_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include('User must exist', "User can't be blank")
-    end
-    it '１枚画像がないと出品できない' do
+      it '１枚画像がないと出品できない' do
       @item.image = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Image can't be blank")
@@ -60,54 +55,30 @@ describe '商品の出品登録' do
     it 'カテゴリーの情報が「---」だと出品できない' do
       @item.category_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include('Category must be other than 0')
-    end
-    it 'カテゴリーの情報が空欄だと出品できない' do
-      @item.category_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
+      expect(@item.errors.full_messages).to include("Category must be other than 0")
     end
     it '商品の状態の情報が「---」だと出品できない' do
       @item.item_condition_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Item condition must be other than 0')
     end
-    it '商品の状態の情報が空欄だと出品できない' do
-      @item.item_condition_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Item condition can't be blank", 'Item condition is not a number')
-    end
     it '配送料の負担の情報が「---」だと出品できない' do
       @item.shipping_cost_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping cost must be other than 0')
-    end
-    it '配送料の負担の情報が空欄だと出品できない' do
-      @item.shipping_cost_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping cost can't be blank", 'Shipping cost is not a number')
-    end
-    it '発送元の地域の情報が「---」だと出品できない' do
-      @item.prefecture_id = 0
-      @item.valid?
-      expect(@item.errors.full_messages).to include('Prefecture must be other than 0')
-    end
-    it '発送元の地域の情報が空欄だと出品できない' do
-      @item.prefecture_id = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
     end
     it '発送までの日数の情報が「---」だと出品できない' do
       @item.shipping_day_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping day must be other than 0')
     end
-    it '発送までの日数の情報が空欄だと出品できない' do
-      @item.shipping_day_id = nil
+    
+    it '価格の情報が空欄だと出品できない' do
+      @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping day can't be blank", 'Shipping day is not a number')
+      expect(@item.errors.full_messages).to include("Price can't be blank")
     end
-    it '価格の情報がないと出品できない' do
+    it '価格に半角数字以外が含まれている場合は出品できない' do
       @item.price = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
