@@ -107,10 +107,10 @@ describe '商品の出品登録' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping day can't be blank", 'Shipping day is not a number')
     end
-    it '価格が空欄だと出品できない' do
+    it '価格の情報がないと出品できない' do
       @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is not a number')
+      expect(@item.errors.full_messages).to include("Price is not a number")
     end
     it '価格の範囲が、300円未満だと出品できない' do
       @item.price = 100
