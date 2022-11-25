@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     validates :price, presence: true 
   
     # 数値は半角数値
-    validates :price, format: { with: /\A[0-9]+\z/ }
+    validates :price, numericality:{ with: /\A[0-9]+\z/, message: 'should be half-width numbers' }
     # 整数のみを許可
     validates :price, numericality: { only_integer: true }
     # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
