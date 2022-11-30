@@ -13,7 +13,7 @@ class OrderForm
     validates :city
     validates :address
     validates :building_name
-    validates :phone_number, format: { with: /\A[0-9]+{11}\z/, message: 'テストコード後に実装！' }
+    validates :phone_number, format: { with: /\A[0-9]+{11}\z/, message: 'is invalid' }
     validates :order
   end
 
