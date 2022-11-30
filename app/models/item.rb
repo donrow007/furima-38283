@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 
   # テーブルとのアソシエーション
   belongs_to :user
+  has_one :order, dependent: :destroy
 
   # アクティブハッシュとのアソシエーション
   belongs_to :category
