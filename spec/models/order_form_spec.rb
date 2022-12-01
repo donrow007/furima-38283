@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe OrderForm, type: :model do
-  
   before do
     @order_form = FactoryBot.build(:order_form)
   end
@@ -100,4 +99,3 @@ RSpec.describe OrderForm, type: :model do
     end
   end
 end
-

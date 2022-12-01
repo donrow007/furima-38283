@@ -1,6 +1,6 @@
 class OrderForm
   include ActiveModel::Model
-  
+
   attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :address, :building_name, :phone_number, :order
 
   with_options presence: true do
@@ -18,6 +18,7 @@ class OrderForm
   def save
     order = Order.create(user: user_id, item: item_id)
     # ストロングパラメーター
-    Payment.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building_name: building_name, phone_number: phone_number, order_id: order.id)
+    Payment.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address,
+                   building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
 end
