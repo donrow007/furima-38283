@@ -20,7 +20,7 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form).to be_valid
       end
       it '郵便番号が「3桁＋ハイフン＋4桁」の組み合わせであれば保存できる' do
-        @order_form.postcode = '123-4560'
+        @order_form.post_code = '123-4560'
         expect(@order_form).to be_valid
       end
       it '都道府県が「---」以外かつ空でなければ保存できる' do
@@ -28,11 +28,11 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form).to be_valid
       end
       it '市区町村が空でなければ保存できる' do
-        @order_form.city = '横浜市緑区'
+        @order_form.city = '横浜市'
         expect(@order_form).to be_valid
       end
       it '番地が空でなければ保存できる' do
-        @order_form.address = '青山１１１'
+        @order_form.address = '旭区１２３'
         expect(@order_form).to be_valid
       end
       it '電話番号が11番桁以内かつハイフンなしであれば保存できる' do
@@ -53,14 +53,14 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include("Item can't be blank")
       end
       it '郵便番号が空だと保存できないこと' do
-        @order_form.postcode = nil
+        @order_form.post_code = nil
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Postcode can't be blank", 'Postcode is invalid. Include hyphen(-)')
+        expect(@order_form.errors.full_messages).to include("Post code can't be blank")
       end
       it '郵便番号にハイフンがないと保存できないこと' do
-        @order_form.postcode = 1_234_567
+        @order_form.post_code = 1_234_567
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include('Postcode is invalid. Include hyphen(-)')
+        expect(@order_form.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it '都道府県が「---」だと保存できないこと' do
         @order_form.prefecture_id = 0
