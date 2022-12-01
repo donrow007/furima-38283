@@ -13,6 +13,8 @@ class OrderForm
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
+  # トークンのバリデーション
+    validates :token
   end
 
   def save
