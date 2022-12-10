@@ -13,7 +13,7 @@ class OrderForm
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
-  # トークンのバリデーション
+    # トークンのバリデーション
     validates :token
   end
 
@@ -21,6 +21,6 @@ class OrderForm
     order = Order.create(user_id: user_id, item_id: item_id)
     # ストロングパラメーター
     Destination.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address,
-                   building_name: building_name, phone_number: phone_number, order_id: order.id)
+                       building_name: building_name, phone_number: phone_number, order_id: order.id)
   end
 end
