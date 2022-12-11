@@ -2,8 +2,15 @@ require 'rails_helper'
 
 RSpec.describe OrderForm, type: :model do
   before do
-    @order_form = FactoryBot.build(:order_form)
-  end
+# 親モデルのインスタンスを生成する
+@user = FactoryBot.create(:user)
+@item = FactoryBot.create(:item)
+
+
+# 親モデルのインスタンスからidを抽出する
+@order_form = FactoryBot.build(:order_form, user_id: @user.id, item_id: @item.id)
+sleep 0.1
+end
 
   describe '配送先情報の保存' do
     context '配送先情報の保存ができるとき' do
@@ -36,6 +43,10 @@ RSpec.describe OrderForm, type: :model do
       end
       it '電話番号が11番桁以内かつハイフンなしであれば保存できる' do
         @order_form.phone_number = 12_345_678_910
+        expect(@order_form).to be_valid
+      end
+      it '建物名が空でも保存できる' do
+        @order_form.building_name = nil
         expect(@order_form).to be_valid
       end
     end
@@ -100,6 +111,11 @@ RSpec.describe OrderForm, type: :model do
         @order_form.token = nil
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Token can't be blank")
+      end
+      it '電話番号が9桁以下あると保存できないこと' do
+        @order_form.phone_number = 12_345_678
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end
