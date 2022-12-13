@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   # テーブルとのアソシエーション
   belongs_to :user
-  has_one :order
+  has_one :order, dependent: :destroy
 
   # アクティブハッシュとのアソシエーション
   belongs_to :category
@@ -22,8 +22,8 @@ class Item < ApplicationRecord
 
   # 数値は半角数値
   validates :price, format: { with: /\A[0-9]+\z/ }
-  # 整数のみを許可
-  validates :price, numericality: { only_integer: true }
+  # 整数のみを許可（重複のため）
+  #validates :price, numericality: { only_integer: true }
   # 300円以上かつ9,999,999円以下で、半角数字でないと入力不可
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
